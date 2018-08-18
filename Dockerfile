@@ -23,12 +23,12 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
 
 ## General Dependencies 
 RUN GEN_DEP_PACKS="ca-certificates \
-    curl \
     dnsutils \
-    git \
+    curl \
+    wget \
     rsync \
-    unzip \
-    wget" && \
+    git \
+    unzip" && \
     echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections && \
     apt-get update && \
     apt-get install -y --no-install-recommends $GEN_DEP_PACKS && \

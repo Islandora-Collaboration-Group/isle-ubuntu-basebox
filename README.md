@@ -11,8 +11,10 @@ Contains and Includes:
   - [Oracle Java 8](https://www.oracle.com/technetwork/java/javase/index.html)
   - ca-certs, curl, dnsutils, git, rsync, unzip, wget
 
+Size: 370MB
+
 ## Generic Usage
 
 ```
-docker run -it --rm benjaminrosner/isle-ubuntubase:latest bash
+docker run -it --rm benjaminrosner/isle-ubuntubase bash
 ```
