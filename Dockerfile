@@ -16,8 +16,7 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.vcs-url="https://github.com/Islandora-Collaboration-Group/isle-ubuntu-basebox" \
       org.label-schema.vendor="Islandora Collaboration Group (ICG) - islandora-consortium-group@googlegroups.com" \
       org.label-schema.version=$VERSION \
-      org.label-schema.schema-version="1.0" \
-      maintainer="Benjamin Rosner, brosner@barnard.edu"
+      org.label-schema.schema-version="1.0"
 
 ## Understanding docker image layers @see https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#minimize-the-number-of-layers
 
