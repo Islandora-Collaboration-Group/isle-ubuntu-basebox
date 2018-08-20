@@ -8,11 +8,11 @@ Based on:
 
 Contains and Includes:
   - [S6 Overlay](https://github.com/just-containers/s6-overlay)
-  - [Oracle Java 8](https://www.oracle.com/technetwork/java/javase/index.html)
+  - [Oracle Java 8 JDK](https://www.oracle.com/technetwork/java/javase/index.html)
   - ca-certs, dnsutils, openssl
   - bzip2, curl, git, rsync, unzip, wget
 
-Size: 370MB
+Size: 580MB
 
 ## Generic Usage
 
