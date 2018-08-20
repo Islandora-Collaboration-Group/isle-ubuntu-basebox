@@ -9,7 +9,7 @@ ARG JAVA_SECURITY_BUILD
 ARG S6_OVERLAY_VERSION
 
 LABEL org.label-schema.build-date=$BUILD_DATE \
-      org.label-schema.name="ISLE Ubuntu 18.04 (Bionic) Base Image with Oracle Java" \
+      org.label-schema.name="ISLE Ubuntu 18.04 (Bionic) Base Image with Oracle Java JDK" \
       org.label-schema.description="ISLE base Docker images based on Ubuntu 18.04 (Bionic), S6 Overlay, and Oracle JDK." \
       org.label-schema.url="https://islandora-collaboration-group.github.io" \
       org.label-schema.vcs-ref=$VCS_REF \
@@ -56,12 +56,16 @@ RUN cd /tmp && \
     update-alternatives --install "/usr/bin/jar" "jar" "/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/bin/jar" 1000 && \
     update-alternatives --install "/usr/bin/jexec" "jexec" "/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/jre/lib/jexec" 1000 && \
     update-alternatives --install "/usr/bin/keytool" "keytool" "/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/bin/keytool" 1000 && \
+    update-alternatives --install "/usr/bin/orbd" "orbd" "/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/bin/orbd" 1000 && \
+    update-alternatives --install "/usr/bin/native2ascii" "native2ascii" "/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/bin/native2ascii" 1000 && \
     update-alternatives --install "/usr/bin/pack200" "pack200" "/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/bin/pack200" 1000 && \
     update-alternatives --install "/usr/bin/unpack200" "unpack200" "/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/bin/unpack200" 1000 && \
+    update-alternatives --install "/usr/bin/rmid" "rmid" "/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/bin/rmid" 1000 && \
+    update-alternatives --install "/usr/bin/rmiregistry" "rmiregistry" "/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/bin/rmiregistry" 1000 && \
+    update-alternatives --install "/usr/bin/schemagen" "schemagen" "/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/bin/schemagen" 1000 && \
     update-alternatives --install "/usr/bin/servertool" "servertool" "/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/bin/servertool" 1000 && \
     update-alternatives --install "/usr/bin/policytool" "policytool" "/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/bin/policytool" 1000 && \
     update-alternatives --install "/usr/bin/tnameserv" "tnameserv" "/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/bin/tnameserv" 1000 && \
-    update-alternatives --install "/usr/bin/schemagen" "schemagen" "/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/bin/schemagen" 1000 && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
 ENV JAVA_HOME=/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD \
