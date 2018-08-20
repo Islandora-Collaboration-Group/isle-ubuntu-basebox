@@ -10,7 +10,7 @@ ARG S6_OVERLAY_VERSION
 
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.name="ISLE Ubuntu 18.04 (Bionic) Base Image with Oracle Java" \
-      org.label-schema.description="ISLE base Docker images based on Ubuntu 18.04 (Bionic), S6 Overlay, and Oracle JDK." \
+      org.label-schema.description="ISLE base Docker images based on Ubuntu 18.04 (Bionic), S6 Overlay, and Oracle Server JRE." \
       org.label-schema.url="https://islandora-collaboration-group.github.io" \
       org.label-schema.vcs-ref=$VCS_REF \
       org.label-schema.vcs-url="https://github.com/Islandora-Collaboration-Group/isle-ubuntu-basebox" \
