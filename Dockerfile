@@ -42,6 +42,7 @@ RUN tar xzf /tmp/s6-overlay-amd64.tar.gz -C / && \
     rm /tmp/s6-overlay-amd64.tar.gz
 
 ## Java Phase (Note after January this is broken.)
+## Java SERVER JRE 8
 ENV JAVA_VERSION=${JAVA_VERSION:-8u181}
 ENV JAVA_BUILD=${JAVA_BUILD:-b13}
 ENV JAVA_SECURITY_BUILD=${JAVA_SECURITY_BUILD:-1.8.0_181}
@@ -50,12 +51,26 @@ RUN cd /tmp && \
     tar xf server-jre-$JAVA_VERSION-linux-x64.tar.gz && \
     mkdir -p /usr/lib/jvm && \
     mv jdk$JAVA_SECURITY_BUILD /usr/lib/jvm && \
-    update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/bin/java" 1010 && \
-    update-alternatives --install "/usr/bin/javac" "javac" "/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/bin/javac" 1010 && \
+    update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/bin/java" 1000 && \
+    update-alternatives --install "/usr/bin/javac" "javac" "/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/bin/javac" 1000 && \
+    update-alternatives --install "/usr/bin/jar" "jar" "/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/bin/jar" 1000 && \
+    update-alternatives --install "/usr/bin/jexec" "jexec" "/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/jre/lib/jexec" 1000 && \
+    update-alternatives --install "/usr/bin/keytool" "keytool" "/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/bin/keytool" 1000 && \
+    update-alternatives --install "/usr/bin/orbd" "orbd" "/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/bin/orbd" 1000 && \
+    update-alternatives --install "/usr/bin/native2ascii" "native2ascii" "/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/bin/native2ascii" 1000 && \
+    update-alternatives --install "/usr/bin/pack200" "pack200" "/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/bin/pack200" 1000 && \
+    update-alternatives --install "/usr/bin/unpack200" "unpack200" "/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/bin/unpack200" 1000 && \
+    update-alternatives --install "/usr/bin/rmid" "rmid" "/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/bin/rmid" 1000 && \
+    update-alternatives --install "/usr/bin/rmiregistry" "rmiregistry" "/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/bin/rmiregistry" 1000 && \
+    update-alternatives --install "/usr/bin/schemagen" "schemagen" "/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/bin/schemagen" 1000 && \
+    update-alternatives --install "/usr/bin/servertool" "servertool" "/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/bin/servertool" 1000 && \
+    update-alternatives --install "/usr/bin/tnameserv" "tnameserv" "/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/bin/tnameserv" 1000 && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
 ENV JAVA_HOME=/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD \
     JRE_HOME=/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/jre \
+    JRE_PATH=$PATH:/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/bin:/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/jre/bin \
+    CLASSPATH=/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/jre/lib \
     PATH=$PATH:/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/bin:/usr/lib/jvm/jdk$JAVA_SECURITY_BUILD/jre/bin
 
 ENTRYPOINT ["/init"]
