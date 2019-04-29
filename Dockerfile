@@ -46,8 +46,17 @@ ENV JAVA_VERSION=${JAVA_VERSION:-8u202}
 ENV JAVA_BUILD=${JAVA_BUILD:-b08}
 ENV JAVA_SECURITY_BUILD=${JAVA_SECURITY_BUILD:-1.8.0_202}
 ENV JAVA_SEC_HASH=${JAVA_SEC_HASH:-1961070e4c9b4e26a04e7f5a083f551e}
+
+# Post April 16, 2019, an Oracle account is required to download previous versions of Java
+# Download the tar.gz in advance prior to running this build script
+# and move it to the root of this image directory for the build to succeed.
+
+COPY server-jre-$JAVA_VERSION-linux-x64.tar.gz /tmp/
+
 RUN cd /tmp && \
-    curl -L -b "oraclelicense=a" -O http://download.oracle.com/otn-pub/java/jdk/$JAVA_VERSION-$JAVA_BUILD/$JAVA_SEC_HASH/server-jre-$JAVA_VERSION-linux-x64.tar.gz && \
+# Post April 16, 2019, an Oracle account is required to download previous versions of Java
+# The automatic method no longer works. Commented out. 
+# curl -L -b "oraclelicense=a" -O http://download.oracle.com/otn-pub/java/jdk/$JAVA_VERSION-$JAVA_BUILD/$JAVA_SEC_HASH/server-jre-$JAVA_VERSION-linux-x64.tar.gz && \
     tar xf server-jre-$JAVA_VERSION-linux-x64.tar.gz && \
     mkdir -p /usr/lib/jvm && \
     mv jdk$JAVA_SECURITY_BUILD /usr/lib/jvm && \
